@@ -54,6 +54,7 @@ const login = async (req, res) => {
         const token = await generateBearerToken(user);
 
         res.status(200).json({
+          message: "Login successful!",
           data: {
             user,
             token,

@@ -6,6 +6,7 @@ const dontenv = require("dotenv");
 const database = require("./configs/database.config");
 
 const authRoutes = require("./routes/auth.route");
+const userRoutes = require("./routes/user.route");
 
 const app = express();
 const PORT = 3000;
@@ -19,6 +20,7 @@ dontenv.config();
 database();
 
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 
 app.get("/api", (req, res) => {
   res.status(200).json({
