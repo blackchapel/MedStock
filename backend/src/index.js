@@ -5,6 +5,8 @@ const fs = require("fs");
 const dontenv = require("dotenv");
 const database = require("./configs/database.config");
 
+const authRoutes = require("./routes/auth.route");
+
 const app = express();
 const PORT = 3000;
 
@@ -15,6 +17,8 @@ app.use(morgan("dev"));
 
 dontenv.config();
 database();
+
+app.use("/api/auth", authRoutes);
 
 app.get("/api", (req, res) => {
   res.status(200).json({
