@@ -7,6 +7,7 @@ const database = require("./configs/database.config");
 
 const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
+const inventoryRoutes = require("./routes/inventory.route");
 
 const app = express();
 const PORT = 3000;
@@ -21,6 +22,7 @@ database();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/inventory", inventoryRoutes);
 
 app.get("/api", (req, res) => {
   res.status(200).json({

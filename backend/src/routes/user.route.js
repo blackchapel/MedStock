@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get("/", auth.verifyJwt, getUser);
 
-router.post("/", auth.verifyJwt, updateUser);
+router.put("/", auth.verifyJwt, updateUser);
 
 router.delete("/", auth.verifyJwt, deleteUser);
 

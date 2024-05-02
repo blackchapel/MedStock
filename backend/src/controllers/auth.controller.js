@@ -3,7 +3,7 @@ const {
   hashPassword,
   generateBearerToken,
   validatePassword,
-} = require("../utils/auth.util");
+} = require("../services/auth.service");
 
 const signUp = async (req, res) => {
   try {
