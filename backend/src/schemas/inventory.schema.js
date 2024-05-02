@@ -7,6 +7,11 @@ const inventorySchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    username: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     name: {
       type: String,
       required: true,
@@ -50,7 +55,7 @@ const inventorySchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 const Inventory = mongoose.model("inventory", inventorySchema);

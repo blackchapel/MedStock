@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+var cron = require("node-cron");
 const fs = require("fs");
 const dontenv = require("dotenv");
 const database = require("./configs/database.config");
@@ -8,6 +9,7 @@ const database = require("./configs/database.config");
 const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
 const inventoryRoutes = require("./routes/inventory.route");
+const { notification } = require("./services/notification.service");
 
 const app = express();
 const PORT = 3000;
@@ -34,4 +36,8 @@ app.get("/api", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server started on ${process.env.APP_URL}`);
+});
+
+cron.schedule("10 * * * * *", async () => {
+  await notification();
 });
