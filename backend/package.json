@@ -1,6 +1,6 @@
 {
   "name": "medstock-backend",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "MedStock Backend",
   "main": "index.js",
   "scripts": {
@@ -12,13 +12,15 @@
   "license": "GPL-3.0-or-later",
   "private": false,
   "dependencies": {
+    "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

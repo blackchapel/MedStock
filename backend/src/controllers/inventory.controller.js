@@ -9,15 +9,16 @@ const addInventory = async (req, res) => {
   try {
     req.body["totalNumberOfUnits"] = calculateTotalNumberOfUnits(
       req.body.numberOfStrips,
-      req.body.numberOfUnitsPerStrip,
+      req.body.numberOfUnitsPerStrip
     );
     req.body["stockOverDate"] = calculateStockOverDate(req.body);
     req.body["notificationDateAndTime"] = calculateNotificationDateAndTime(
-      req.body,
+      req.body
     );
 
     const newInventory = new Inventory({
       userId: req.user.id,
+      username: req.user.username,
       name: req.body.name,
       numberOfStrips: parseInt(req.body.numberOfStrips),
       numberOfUnitsPerStrip: parseInt(req.body.numberOfUnitsPerStrip),
@@ -92,17 +93,18 @@ const updateInventory = async (req, res) => {
   try {
     req.body["totalNumberOfUnits"] = calculateTotalNumberOfUnits(
       req.body.numberOfStrips,
-      req.body.numberOfUnitsPerStrip,
+      req.body.numberOfUnitsPerStrip
     );
     req.body["stockOverDate"] = calculateStockOverDate(req.body);
     req.body["notificationDateAndTime"] = calculateNotificationDateAndTime(
-      req.body,
+      req.body
     );
 
     const inventory = await Inventory.findByIdAndUpdate(
       req.params.id,
       {
         userId: req.user.id,
+        username: req.user.username,
         name: req.body.name,
         numberOfStrips: parseInt(req.body.numberOfStrips),
         numberOfUnitsPerStrip: parseInt(req.body.numberOfUnitsPerStrip),
@@ -114,7 +116,7 @@ const updateInventory = async (req, res) => {
         stockOverDate: req.body.stockOverDate,
         notificationDateAndTime: req.body.notificationDateAndTime,
       },
-      { new: true },
+      { new: true }
     );
 
     if (inventory) {
