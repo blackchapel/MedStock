@@ -38,6 +38,6 @@ app.listen(PORT, () => {
   console.log(`Server started on ${process.env.APP_URL}`);
 });
 
-cron.schedule("10 * * * * *", async () => {
+cron.schedule("*/10 * * * *", async () => {
   await notification();
 });
