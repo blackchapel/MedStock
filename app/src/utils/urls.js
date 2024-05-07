@@ -1,0 +1,11 @@
+export const BASE_URL = 'https://medstock-api.onrender.com/api';
+export const SIGNUP = 'auth/signup';
+export const LOGIN = 'auth/login';
+export const GET_MEDICINES = 'inventory/all';
+export const GET_MEDICINE = 'inventory';
+export const POST_MEDICINE = 'inventory';
+export const PUT_MEDICINE = 'inventory';
+export const DELETE_MEDICINE = 'inventory';
+export const GET_USER = 'user';
+export const PUT_USER = 'user';
+export const DELETE_USER = 'user';
