@@ -7,7 +7,7 @@ import { RPH, RPW } from '../utils/dimensions';
 // #FFA071
 // #FF6961
 
-const MedicineCard = ({ data }) => {
+const MedicineCard = ({ data, navigation }) => {
   return (
     <View>
       <View
@@ -17,7 +17,7 @@ const MedicineCard = ({ data }) => {
           marginVertical: RPH(2)
         }}>
         <TouchableRipple
-          onPress={() => console.log('Pressed')}
+          onPress={() => navigation.navigate('Edit_Medicine', data)}
           rippleColor="rgba(204, 196, 206, 0.32)"
           centered={true}>
           <View>

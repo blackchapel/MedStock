@@ -41,7 +41,6 @@ const AddMedicineScreen = ({ navigation }) => {
   const onConfirmSingle = React.useCallback(
     params => {
       setOpen(false);
-      console.log(params.date);
       setStartDate(params.date);
     },
     [setOpen, setStartDate]
@@ -84,16 +83,8 @@ const AddMedicineScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.body}>
       <Surface mode="flat" elevation={1} style={styles.surface}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginRight: RPW(4),
-            marginTop: RPH(1),
-            marginBottom: RPH(2)
-          }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={styles.header}>
+          <View style={styles.headerText}>
             <IconButton
               icon="close"
               size={28}
@@ -206,7 +197,7 @@ const AddMedicineScreen = ({ navigation }) => {
             />
             <TextInput
               mode="outlined"
-              label="Notification"
+              label="Reminder"
               value={notificationPeriod}
               error={isError}
               keyboardType="numeric"
@@ -222,12 +213,7 @@ const AddMedicineScreen = ({ navigation }) => {
             Something went wrong!
           </HelperText>
 
-          <View
-            style={{
-              paddingTop: 50,
-              flexDirection: 'row',
-              justifyContent: 'center'
-            }}>
+          <View style={styles.menu}>
             <Menu
               visible={visible}
               onDismiss={() => setVisible(!visible)}
@@ -279,6 +265,18 @@ const styles = StyleSheet.create({
   surface: {
     flex: 1
   },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginRight: RPW(4),
+    marginTop: RPH(1),
+    marginBottom: RPH(2)
+  },
+  headerText: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
   container: {
     flex: 1,
     paddingHorizontal: RPW(4)
@@ -296,6 +294,11 @@ const styles = StyleSheet.create({
   },
   secondInput: {
     width: RPW(44)
+  },
+  menu: {
+    paddingTop: 50,
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 });
 
