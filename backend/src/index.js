@@ -9,6 +9,7 @@ const database = require("./configs/database.config");
 const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
 const inventoryRoutes = require("./routes/inventory.route");
+const notificationRoutes = require("./routes/notification.route");
 const { notification } = require("./services/notification.service");
 
 const app = express();
@@ -25,6 +26,7 @@ database();
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/inventory", inventoryRoutes);
+app.use("/api/notification", notificationRoutes);
 
 app.get("/api", (req, res) => {
   res.status(200).json({
