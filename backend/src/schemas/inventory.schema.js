@@ -32,7 +32,7 @@ const inventorySchema = new mongoose.Schema(
     frequency: {
       type: String,
       required: true,
-      enum: ["DAILY", "ALTERNATE DAYS", "WEEKLY"],
+      enum: ["DAILY", "ALTERNATE", "WEEKLY"],
     },
     numberOfUnitsPerDay: {
       type: Number,

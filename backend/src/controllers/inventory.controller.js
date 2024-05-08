@@ -22,11 +22,11 @@ const addInventory = async (req, res) => {
       name: req.body.name,
       numberOfStrips: parseInt(req.body.numberOfStrips),
       numberOfUnitsPerStrip: parseInt(req.body.numberOfUnitsPerStrip),
-      totalNumberOfUnits: req.body.totalNumberOfUnits,
+      totalNumberOfUnits: parseInt(req.body.totalNumberOfUnits),
       frequency: req.body.frequency,
-      numberOfUnitsPerDay: req.body.numberOfUnitsPerDay,
+      numberOfUnitsPerDay: parse(Intreq.body.numberOfUnitsPerDay),
       startDate: req.body.startDate,
-      notificationPeriod: req.body.notificationPeriod,
+      notificationPeriod: parseInt(req.body.notificationPeriod),
       stockOverDate: req.body.stockOverDate,
       notificationDateAndTime: req.body.notificationDateAndTime,
     });
@@ -36,7 +36,7 @@ const addInventory = async (req, res) => {
     res.status(201).json({
       message: "Inventory created!",
       data: {
-        newInventory,
+        inventory: newInventory,
       },
     });
   } catch (error) {
