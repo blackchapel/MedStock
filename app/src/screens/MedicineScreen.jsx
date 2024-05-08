@@ -7,7 +7,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import { ActivityIndicator, Appbar, MD3Colors, Text } from 'react-native-paper';
+import { ActivityIndicator, MD3Colors, Text } from 'react-native-paper';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -15,6 +15,7 @@ import { RPH, RPW } from '../utils/dimensions';
 import { BASE_URL, GET_MEDICINES } from '../utils/urls';
 import MedicineCard from '../components/MedicineCard';
 import FloatingActionButton from '../components/FloatingActionButton';
+import AppBar from '../components/AppBar';
 
 const MedicineScreen = ({ navigation }) => {
   const [medicines, setMedicines] = React.useState([]);
@@ -51,31 +52,13 @@ const MedicineScreen = ({ navigation }) => {
     setIsLoading(false);
   };
 
-  const logout = async () => {
-    try {
-      await AsyncStorage.removeItem('user');
-      await AsyncStorage.removeItem('token');
-      navigation.replace('Login');
-    } catch {
-      console.error(error);
-    }
-  };
-
   React.useEffect(() => {
     getMedicines();
   }, []);
 
   return (
     <SafeAreaView style={styles.body}>
-      <Appbar.Header elevated={true}>
-        <Appbar.Content title="Medicines" />
-        <Appbar.Action
-          icon="account-circle"
-          onPress={() => {
-            logout();
-          }}
-        />
-      </Appbar.Header>
+      <AppBar title={'Medicines'} navigation={navigation} />
 
       {isLoading ? (
         <View style={styles.containerTwo}>

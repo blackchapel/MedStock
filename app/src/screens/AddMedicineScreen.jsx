@@ -70,7 +70,7 @@ const AddMedicineScreen = ({ navigation }) => {
         }
       );
 
-      if (res.status == 201 && res.data.data.newInventory !== 'undefined') {
+      if (res.status == 201 && res.data.data.inventory !== 'undefined') {
         navigation.replace('BottomTab');
       }
     } catch (error) {
@@ -227,7 +227,7 @@ const AddMedicineScreen = ({ navigation }) => {
               />
               <Menu.Item
                 onPress={() => {
-                  setFrequency('ALTERNATE DAYS');
+                  setFrequency('ALTERNATE');
                   setVisible(!visible);
                 }}
                 title="ALTERNATE"
