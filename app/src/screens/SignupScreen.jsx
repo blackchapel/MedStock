@@ -110,6 +110,7 @@ const SignupScreen = ({ navigation }) => {
           style={styles.textInput}
           secureTextEntry={isSecureEntry}
           autoComplete="password"
+          autoCapitalize="none"
           error={isError}
           right={
             <TextInput.Icon
