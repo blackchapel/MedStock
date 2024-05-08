@@ -32,12 +32,12 @@ const MedicineScreen = ({ navigation }) => {
       });
 
       res.data.data.inventory.forEach(item => {
-        const now = new Date();
+        const now = new Date(new Date().getTime() + 300 * 60000);
         const reminderDate = new Date(item.notificationDateAndTime);
         const restockDate = new Date(item.stockOverDate);
         if (now > restockDate) {
           item['color'] = '#FF6961';
-        } else if (now >= reminderDate && now < restockDate) {
+        } else if (now >= reminderDate && now <= restockDate) {
           item['color'] = '#FFA071';
         } else if (now < reminderDate) {
           item['color'] = '#ABDCAE';
@@ -114,7 +114,7 @@ const MedicineScreen = ({ navigation }) => {
         </View>
       )}
 
-      <FloatingActionButton />
+      <FloatingActionButton navigation={navigation} />
     </SafeAreaView>
   );
 };

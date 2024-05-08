@@ -79,7 +79,7 @@ const SignupScreen = ({ navigation }) => {
           label="Name"
           style={styles.textInput}
           autoComplete="name"
-          autoCapitalize="words"
+          autoCapitalize
           autoFocus={true}
           error={isError}
           value={name}
