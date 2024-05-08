@@ -6,6 +6,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import BottomTabNavigation from './BottomTabNavigation';
 import AddMedicineScreen from '../screens/AddMedicineScreen';
+import EditMedicineScreen from '../screens/EditMedicineScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const StackNavigation = () => {
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="BottomTab" component={BottomTabNavigation} />
         <Stack.Screen name="Add_Medicine" component={AddMedicineScreen} />
+        <Stack.Screen name="Edit_Medicine" component={EditMedicineScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
