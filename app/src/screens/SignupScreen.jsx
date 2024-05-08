@@ -22,7 +22,7 @@ const SignupScreen = ({ navigation }) => {
   const [isError, setIsError] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState('');
 
-  const loginHandler = async () => {
+  const signupHandler = async () => {
     try {
       setIsLoading(true);
 
@@ -125,6 +125,9 @@ const SignupScreen = ({ navigation }) => {
           ref={input => {
             this.thirdTextInput = input;
           }}
+          onSubmitEditing={() => {
+            signupHandler();
+          }}
         />
 
         <HelperText type="error" visible={isError}>
@@ -135,7 +138,7 @@ const SignupScreen = ({ navigation }) => {
           mode="contained"
           loading={isLoading}
           disabled={isLoading}
-          onPress={() => loginHandler()}
+          onPress={() => signupHandler()}
           style={styles.button}>
           Sign up
         </Button>

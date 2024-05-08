@@ -112,6 +112,9 @@ const LoginScreen = ({ navigation }) => {
           ref={input => {
             this.secondTextInput = input;
           }}
+          onSubmitEditing={() => {
+            loginHandler();
+          }}
         />
 
         <HelperText type="error" visible={isError}>
