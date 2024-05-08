@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import { enGB, registerTranslation } from 'react-native-paper-dates';
 import { AppRegistry } from 'react-native';
 import App from './src/App';
 import {
@@ -6,6 +7,8 @@ import {
   PaperProvider
 } from 'react-native-paper';
 import { name as appName } from './app.json';
+
+registerTranslation('en-GB', enGB);
 
 const theme = {
   ...DefaultTheme,

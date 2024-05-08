@@ -4,8 +4,12 @@ import { FAB } from 'react-native-paper';
 
 import { RPH, RPW } from '../utils/dimensions';
 
-const FloatingActionButton = () => (
-  <FAB icon="plus" style={styles.fab} onPress={() => console.log('Pressed')} />
+const FloatingActionButton = ({ navigation }) => (
+  <FAB
+    icon="plus"
+    style={styles.fab}
+    onPress={() => navigation.navigate('Add_Medicine')}
+  />
 );
 
 const styles = StyleSheet.create({
