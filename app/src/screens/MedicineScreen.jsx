@@ -95,6 +95,7 @@ const MedicineScreen = ({ navigation }) => {
                 <Text>Add a medicine and it will show up here.</Text>
               </View>
             }
+            ListFooterComponent={<View style={{ height: RPH(10) }} />}
           />
         </View>
       )}

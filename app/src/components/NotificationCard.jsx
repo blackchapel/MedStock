@@ -6,9 +6,7 @@ const LeftContent = props => <Avatar.Icon {...props} icon="pill" />;
 
 const NotificationCard = ({ data }) => {
   return (
-    <Card
-      elevation={3}
-      style={{ marginBottom: RPH(2), paddingVertical: RPH(1) }}>
+    <Card elevation={3} style={{ marginTop: RPH(2), paddingVertical: RPH(1) }}>
       <Card.Title
         title={`${data.title} | ${new Date(data.createdAt).toLocaleDateString(
           'en-GB'

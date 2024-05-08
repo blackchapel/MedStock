@@ -79,6 +79,7 @@ const NotificationScreen = ({ navigation }) => {
                 </Text>
               </View>
             }
+            ListFooterComponent={<View style={{ height: RPH(10) }} />}
           />
         </View>
       )}
@@ -94,8 +95,7 @@ const styles = StyleSheet.create({
   },
   containerOne: {
     flex: 1,
-    marginHorizontal: RPW(3),
-    marginTop: RPH(2)
+    marginHorizontal: RPW(3)
   },
   containerTwo: {
     flex: 1,
