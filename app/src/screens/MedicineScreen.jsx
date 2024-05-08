@@ -85,7 +85,9 @@ const MedicineScreen = ({ navigation }) => {
         <View style={styles.containerOne}>
           <FlatList
             data={medicines}
-            renderItem={({ item }) => <MedicineCard data={item} />}
+            renderItem={({ item }) => (
+              <MedicineCard data={item} navigation={navigation} />
+            )}
             keyExtractor={item => item._id}
             showsVerticalScrollIndicator={false}
             refreshControl={
