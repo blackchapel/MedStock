@@ -24,7 +24,7 @@ const addInventory = async (req, res) => {
       numberOfUnitsPerStrip: parseInt(req.body.numberOfUnitsPerStrip),
       totalNumberOfUnits: parseInt(req.body.totalNumberOfUnits),
       frequency: req.body.frequency,
-      numberOfUnitsPerDay: parse(Intreq.body.numberOfUnitsPerDay),
+      numberOfUnitsPerDay: parseInt(req.body.numberOfUnitsPerDay),
       startDate: req.body.startDate,
       notificationPeriod: parseInt(req.body.notificationPeriod),
       stockOverDate: req.body.stockOverDate,
