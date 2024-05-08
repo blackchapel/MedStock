@@ -9,3 +9,4 @@ export const DELETE_MEDICINE = 'inventory';
 export const GET_USER = 'user';
 export const PUT_USER = 'user';
 export const DELETE_USER = 'user';
+export const GET_NOTIFICATIONS = 'notification/all';
