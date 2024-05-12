@@ -34,7 +34,7 @@ const notification = async () => {
         await newNotification.save();
 
         await axios.post(
-          `https://ntfy.sh/${iterator.username}`,
+          `https://ntfy.sh/medstock-${iterator.username}`,
           newNotification.description,
           {
             headers: {
