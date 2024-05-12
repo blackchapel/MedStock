@@ -38,7 +38,8 @@ const EditMedicineScreen = ({ route, navigation }) => {
   );
   const [visible, setVisible] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isSaveLoading, setIsSaveLoading] = React.useState(false);
+  const [isDeleteLoading, setIsDeleteLoading] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
 
@@ -56,7 +57,7 @@ const EditMedicineScreen = ({ route, navigation }) => {
   );
 
   const putMedicine = async () => {
-    setIsLoading(true);
+    setIsSaveLoading(true);
     setDisable(true);
     try {
       const url = `${BASE_URL}/${PUT_MEDICINE}/${data._id}`;
@@ -81,17 +82,18 @@ const EditMedicineScreen = ({ route, navigation }) => {
       );
 
       if (res.status == 201 && res.data.data.inventory !== 'undefined') {
-        navigation.replace('BottomTab');
+        navigation.goBack();
       }
     } catch (error) {
       console.error(error);
       setIsError(true);
     }
-    setIsLoading(false);
+    setIsSaveLoading(false);
     setDisable(false);
   };
 
   const deleteMedicine = async () => {
+    setIsDeleteLoading(true);
     setDisable(true);
     try {
       const url = `${BASE_URL}/${DELETE_MEDICINE}/${data._id}`;
@@ -104,13 +106,14 @@ const EditMedicineScreen = ({ route, navigation }) => {
       });
 
       if (res.status == 200) {
-        navigation.replace('BottomTab');
+        navigation.goBack();
       }
     } catch (error) {
       console.error(error);
       setIsError(true);
     }
     setDisable(false);
+    setIsDeleteLoading(false);
   };
 
   return (
@@ -121,12 +124,12 @@ const EditMedicineScreen = ({ route, navigation }) => {
             <IconButton
               icon="close"
               size={28}
-              onPress={() => navigation.replace('BottomTab')}
+              onPress={() => navigation.goBack()}
             />
             <Text variant="titleLarge">Edit Medicine</Text>
           </View>
           <View style={styles.headerText}>
-            {disable ? (
+            {isDeleteLoading ? (
               <ActivityIndicator
                 animating={true}
                 style={{ marginRight: RPW(3) }}
@@ -139,7 +142,7 @@ const EditMedicineScreen = ({ route, navigation }) => {
               />
             )}
             <Button
-              loading={isLoading}
+              loading={isSaveLoading}
               disabled={disable}
               mode="contained"
               onPress={() => putMedicine()}>

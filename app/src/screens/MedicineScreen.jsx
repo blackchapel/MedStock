@@ -53,8 +53,12 @@ const MedicineScreen = ({ navigation }) => {
   };
 
   React.useEffect(() => {
-    getMedicines();
-  }, []);
+    const unsubscribe = navigation.addListener('focus', () => {
+      getMedicines();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.body}>

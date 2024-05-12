@@ -71,7 +71,7 @@ const AddMedicineScreen = ({ navigation }) => {
       );
 
       if (res.status == 201 && res.data.data.inventory !== 'undefined') {
-        navigation.replace('BottomTab');
+        navigation.goBack();
       }
     } catch (error) {
       console.error(error);
@@ -88,7 +88,7 @@ const AddMedicineScreen = ({ navigation }) => {
             <IconButton
               icon="close"
               size={28}
-              onPress={() => navigation.replace('BottomTab')}
+              onPress={() => navigation.goBack()}
             />
             <Text variant="titleLarge">Add Medicine</Text>
           </View>
