@@ -10,21 +10,21 @@ const calculateStockOverDate = (data) => {
       startDate.getFullYear(),
       startDate.getMonth(),
       startDate.getDate() +
-        Math.floor(data.totalNumberOfUnits / data.numberOfUnitsPerDay),
+        Math.floor(data.totalNumberOfUnits / data.numberOfUnitsPerDay)
     );
-  } else if (data.frequency === "ALTERNATE DAYS") {
+  } else if (data.frequency === "ALTERNATE") {
     return new Date(
       startDate.getFullYear(),
       startDate.getMonth(),
       startDate.getDate() +
-        Math.floor((data.totalNumberOfUnits * 2) / data.numberOfUnitsPerDay),
+        Math.floor((data.totalNumberOfUnits * 2) / data.numberOfUnitsPerDay)
     );
   } else if (data.frequency === "WEEKLY") {
     return new Date(
       startDate.getFullYear(),
       startDate.getMonth(),
       startDate.getDate() +
-        Math.floor((data.totalNumberOfUnits * 7) / data.numberOfUnitsPerDay),
+        Math.floor((data.totalNumberOfUnits * 7) / data.numberOfUnitsPerDay)
     );
   }
 };
@@ -37,7 +37,7 @@ const calculateNotificationDateAndTime = (data) => {
     stockOverDate.getDate() - data.notificationPeriod,
     9,
     0,
-    0,
+    0
   );
 };
 
