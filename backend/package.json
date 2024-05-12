@@ -1,6 +1,6 @@
 {
   "name": "medstock-backend",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "MedStock Backend",
   "main": "index.js",
   "scripts": {

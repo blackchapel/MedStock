@@ -24,7 +24,7 @@ const notification = async () => {
           title: "Refill Reminder",
           description: `${
             iterator.name
-          } is going to get over on ${iterator.stockOverDate.getDay()}th of ${iterator.stockOverDate.toLocaleDateString(
+          } is going to get over on ${iterator.stockOverDate.getDate()} ${iterator.stockOverDate.toLocaleDateString(
             "en-us",
             { month: "long" }
           )}!`,
