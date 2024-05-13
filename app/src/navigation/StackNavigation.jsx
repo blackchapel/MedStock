@@ -84,8 +84,7 @@ const StackNavigation = () => {
               open: config,
               close: closeConfig
             },
-            cardStyleInterpolator:
-              CardStyleInterpolators.forModalPresentationIOS
+            cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid
           }}
         />
         <Stack.Screen
@@ -98,8 +97,7 @@ const StackNavigation = () => {
               open: config,
               close: closeConfig
             },
-            cardStyleInterpolator:
-              CardStyleInterpolators.forModalPresentationIOS
+            cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid
           }}
         />
       </Stack.Navigator>
