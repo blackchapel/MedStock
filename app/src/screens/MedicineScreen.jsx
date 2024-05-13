@@ -7,7 +7,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import { ActivityIndicator, MD3Colors, Text } from 'react-native-paper';
+import { MD3Colors, Text } from 'react-native-paper';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -64,45 +64,39 @@ const MedicineScreen = ({ navigation }) => {
     <SafeAreaView style={styles.body}>
       <AppBar title={'Medicines'} navigation={navigation} />
 
-      {isLoading ? (
-        <View style={styles.containerTwo}>
-          <ActivityIndicator animating={isLoading} size="large" />
-        </View>
-      ) : (
-        <View style={styles.containerOne}>
-          <FlatList
-            data={medicines}
-            renderItem={({ item }) => (
-              <MedicineCard data={item} navigation={navigation} />
-            )}
-            keyExtractor={item => item._id}
-            showsVerticalScrollIndicator={false}
-            refreshControl={
-              <RefreshControl
-                colors={[MD3Colors.primary80]}
-                progressBackgroundColor={MD3Colors.secondary30}
-                refreshing={isLoading}
-                onRefresh={getMedicines}
+      <View style={styles.containerOne}>
+        <FlatList
+          data={medicines}
+          renderItem={({ item }) => (
+            <MedicineCard data={item} navigation={navigation} />
+          )}
+          keyExtractor={item => item._id}
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              colors={[MD3Colors.primary80]}
+              progressBackgroundColor={MD3Colors.secondary30}
+              refreshing={isLoading}
+              onRefresh={getMedicines}
+            />
+          }
+          ListEmptyComponent={
+            <View style={styles.containerTwo}>
+              <Image
+                style={styles.image}
+                source={require('../assets/medicine.png')}
               />
-            }
-            ListEmptyComponent={
-              <View style={styles.containerTwo}>
-                <Image
-                  style={styles.image}
-                  source={require('../assets/medicine.png')}
-                />
 
-                <Text style={styles.text} variant="bodyLarge">
-                  No medicines
-                </Text>
+              <Text style={styles.text} variant="bodyLarge">
+                No medicines
+              </Text>
 
-                <Text>Add a medicine and it will show up here.</Text>
-              </View>
-            }
-            ListFooterComponent={<View style={{ height: RPH(10) }} />}
-          />
-        </View>
-      )}
+              <Text>Add a medicine and it will show up here.</Text>
+            </View>
+          }
+          ListFooterComponent={<View style={{ height: RPH(10) }} />}
+        />
+      </View>
 
       <FloatingActionButton navigation={navigation} />
     </SafeAreaView>
@@ -114,8 +108,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   containerOne: {
-    flex: 1,
-    marginHorizontal: RPW(3)
+    flex: 1
+    // marginHorizontal: RPW(3)
   },
   containerTwo: {
     flex: 1,

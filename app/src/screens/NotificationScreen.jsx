@@ -7,7 +7,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import { ActivityIndicator, MD3Colors, Text } from 'react-native-paper';
+import { MD3Colors, Text } from 'react-native-paper';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -41,48 +41,46 @@ const NotificationScreen = ({ navigation }) => {
   };
 
   React.useEffect(() => {
-    getNotifications();
-  }, []);
+    const unsubscribe = navigation.addListener('focus', () => {
+      getNotifications();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.body}>
       <AppBar title={'Notifications'} navigation={navigation} />
 
-      {isLoading ? (
-        <View style={styles.containerTwo}>
-          <ActivityIndicator animating={isLoading} size="large" />
-        </View>
-      ) : (
-        <View style={styles.containerOne}>
-          <FlatList
-            data={notifications}
-            renderItem={({ item }) => <NotificationCard data={item} />}
-            keyExtractor={item => item._id}
-            showsVerticalScrollIndicator={false}
-            refreshControl={
-              <RefreshControl
-                colors={[MD3Colors.primary80]}
-                progressBackgroundColor={MD3Colors.secondary30}
-                refreshing={isLoading}
-                onRefresh={getNotifications}
+      <View style={styles.containerOne}>
+        <FlatList
+          data={notifications}
+          renderItem={({ item }) => <NotificationCard data={item} />}
+          keyExtractor={item => item._id}
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              colors={[MD3Colors.primary80]}
+              progressBackgroundColor={MD3Colors.secondary30}
+              refreshing={isLoading}
+              onRefresh={getNotifications}
+            />
+          }
+          ListEmptyComponent={
+            <View style={styles.containerTwo}>
+              <Image
+                style={styles.image}
+                source={require('../assets/notification.png')}
               />
-            }
-            ListEmptyComponent={
-              <View style={styles.containerTwo}>
-                <Image
-                  style={styles.image}
-                  source={require('../assets/notification.png')}
-                />
 
-                <Text style={styles.text} variant="bodyLarge">
-                  No notifications
-                </Text>
-              </View>
-            }
-            ListFooterComponent={<View style={{ height: RPH(10) }} />}
-          />
-        </View>
-      )}
+              <Text style={styles.text} variant="bodyLarge">
+                No notifications
+              </Text>
+            </View>
+          }
+          ListFooterComponent={<View style={{ height: RPH(10) }} />}
+        />
+      </View>
 
       <FloatingActionButton navigation={navigation} />
     </SafeAreaView>
